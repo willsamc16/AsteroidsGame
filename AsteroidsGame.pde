@@ -11,21 +11,23 @@ public void setup()
   {
     ben[i] = new Star();
   }
- 
-  
+
 }
 public void draw() 
 {
-  //your code here
- for (int i = 0; i < ben.length; i ++)
+  background(0);
+  for (int i = 0; i < ben.length; i ++)
   {
     ben[i].show();
   }
   bob.show();
+  bob.move();
  
 }
 public void keyPressed()
 {
   if(key =='h')
   bob.hyperspace();
+  if(key == 'w')
+   bob.accelerate(0.3); 
 }
