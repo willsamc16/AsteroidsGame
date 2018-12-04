@@ -42,11 +42,7 @@ class Spaceship extends Floater
     myDirectionX += ((dAmount) * Math.cos(dRadians));    
     myDirectionY += ((dAmount) * Math.sin(dRadians));       
   }   
-  public void turn (int nDegreesOfRotation)   
-  {     
-    //rotates the floater by a given number of degrees    
-    myPointDirection+=nDegreesOfRotation;   
-  }   
+
   public void move ()   //move the floater in the current direction of travel
   {      
     //change the x and y coordinates by myDirectionX and myDirectionY       
@@ -101,9 +97,13 @@ class Spaceship extends Floater
   //hyperspace
   public void hyperspace()
 {
-   background(0);
   myDirectionX = myDirectionY = 0;
   myCenterX = (int)(Math.random()*500);
-   myCenterY = (int)(Math.random()*500);
+  myCenterY = (int)(Math.random()*500);
 }
+ public void turn (int nDegreesOfRotation)   
+  {     
+    //rotates the floater by a given number of degrees    
+    myPointDirection+=nDegreesOfRotation;   
+  }   
 } 
