@@ -1,23 +1,26 @@
 //your variable declarations here
  Spaceship bob = new Spaceship();
  Star[] ben;
- Asteroid[] bleh;
+ArrayList<Asteroid> asteroids = new ArrayList<Asteroid>();
+
 public void setup() 
 {
   background(0);
   size(500,500); 
   ben = new Star[100];
-  bleh = new Asteroid[500];
+
   for (int i = 0; i < ben.length; i ++)
   {
     ben[i] = new Star();
   }
 
-   for (int i = 0; i < bleh.length; i ++)
-  {
-    bleh[i] = new Asteroid();
-  }
-
+   for(int i = 0; i < 30; i ++){
+     asteroids.add(new Asteroid());
+   asteroids.get(i).setDirectionX(Math.random() * 3 - 5);
+    asteroids.get(i).setDirectionY(Math.random() * 5 - 2);
+    asteroids.get(i).setPointDirection((int)(Math.random()*500));
+    asteroids.get(i).myColor = 120;
+   }
 }
 public void draw() 
 {
@@ -29,12 +32,11 @@ public void draw()
   }
   bob.show();
   bob.move();
-  //asteroid
- for (int i = 0; i < bleh.length; i ++)
-  {
-    bleh[i].show();
-  }
- 
+
+ for(int i = asteroids.size() - 1; i >= 0; i--) {
+    asteroids.get(i).show();
+    asteroids.get(i).move();
+ }
 }
 public void keyPressed()
 {
