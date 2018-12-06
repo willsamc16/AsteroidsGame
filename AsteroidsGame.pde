@@ -36,6 +36,9 @@ public void draw()
  for(int i = asteroids.size() - 1; i >= 0; i--) {
     asteroids.get(i).show();
     asteroids.get(i).move();
+    if(dist(bob.getX(), bob.getY(), asteroids.get(i).getX(),  asteroids.get(i).getY()) < 20) {
+      asteroids.remove(i);
+    }
  }
 }
 public void keyPressed()
