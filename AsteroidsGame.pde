@@ -35,7 +35,6 @@ public void draw()
   bob.show();
   bob.move();
 
-
  for(int i = asteroids.size() - 1; i >= 0; i--) {
     asteroids.get(i).show();
     asteroids.get(i).move();
@@ -44,7 +43,13 @@ public void draw()
     }
  }
  
+
 }
+public void mousePressed(){
+   shot.add(new Bullet(bob));
+   shot.get(0).show();   
+}
+
 public void keyPressed()
 {
   if(key =='h')
@@ -58,9 +63,4 @@ public void keyPressed()
   if(key == 's')
   bob.accelerate(-0.2);
  
-  if(key == 'e')
-  shot.get().show();
-  shot.add(new Bullet(bob));
- 
-  
 }
