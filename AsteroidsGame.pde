@@ -16,7 +16,7 @@ public void setup()
     ben[i] = new Star();
   }
 
-   for(int i = 0; i < 30; i ++){
+   for(int i = 0; i < 300; i ++){
      asteroids.add(new Asteroid());
    asteroids.get(i).setDirectionX(Math.random() * 3 - 5);
     asteroids.get(i).setDirectionY(Math.random() * 5 - 2);
@@ -38,16 +38,26 @@ public void draw()
  for(int i = asteroids.size() - 1; i >= 0; i--) {
     asteroids.get(i).show();
     asteroids.get(i).move();
-    if(dist(bob.getX(), bob.getY(), asteroids.get(i).getX(),  asteroids.get(i).getY()) < 20) {
+    if(dist(bob.getX(), bob.getY(), asteroids.get(i).getX(),asteroids.get(i).getY()) < 20) {
       asteroids.remove(i);
     }
  }
- 
+ if(shot.size()>0){
+    for(int i = 0; i < shot.size(); i++){
+      shot.get(i).show();
+      shot.get(i).move();
+    for(int j = 0; j< asteroids.size(); j ++){
+      if(dist(shot.get(i).myCenterX, shot.get(i).myCenterY, asteroids.get(j).getX(), asteroids.get(j).getY()) < 20) {
+        asteroids.remove(j);
+        break;
+      }
+    }
+    }
+  }
 
 }
 public void mousePressed(){
-   shot.add(new Bullet(bob));
-   shot.get(0).show();   
+  shot.add(new Bullet(bob));
 }
 
 public void keyPressed()
