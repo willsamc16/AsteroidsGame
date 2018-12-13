@@ -4,18 +4,19 @@ class Bullet extends Floater
   protected double myDirectionX, myDirectionY; //holds x and y coordinates of the vector for direction of travel   
   protected double myPointDirection;
   protected double dRadians;
-  public Bullet(Spaceship bob)
+  public Bullet(Spaceship bob2)
  {
-  myCenterX= myCenterY = 250;
-  myPointDirection = 1;
+  myCenterX= bob2.myCenterX;
+  myCenterY= bob2.myCenterY;
+  myPointDirection = bob2.getPointDirection();
   double dRadians = myPointDirection*(Math.PI/180);
-  myDirectionX = 5* Math.cos(dRadians) + 0;
-  myDirectionY = 5* Math.sin(dRadians) + 0;
+  myDirectionX = 5* Math.cos(dRadians) + bob2.getDirectionX();
+  myDirectionY = 5* Math.sin(dRadians) + bob2.getDirectionY();
  }
   public void setX(int x){myCenterX = x;}  
-   public int getX(){return myCenterX;}
+   public int getX(){return (int)myCenterX;}
    public void setY(int y){myCenterY = y;}   
-   public int getY(){return myCenterX;}   
+   public int getY(){return (int)myCenterX;}   
    public void setDirectionX(double x){myDirectionX = x;}   
    public double getDirectionX(){return myDirectionX;}   
    public void setDirectionY(double y){myDirectionY = y;}   
@@ -25,14 +26,15 @@ class Bullet extends Floater
  
  public void show()
  {
-   fill(255,0,0);
-   ellipse(bob.getX(),bob.getY(),30,30);
+   fill(0,255,0);
+   ellipse((float)myCenterX, (float)myCenterY,10,10);
  }
   public void move ()   //move the floater in the current direction of travel
   {      
     //change the x and y coordinates by myDirectionX and myDirectionY       
     myCenterX += myDirectionX;    
-    myCenterY += myDirectionY;     
+    myCenterY += myDirectionY;    
+  
    
   }   
 }
